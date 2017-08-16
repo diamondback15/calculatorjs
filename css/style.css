@@ -1,0 +1,69 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,700");
+/* line 3, ../sass/style.scss */
+body {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  font-family: Roboto;
+  user-select: none;
+}
+
+/* line 15, ../sass/style.scss */
+.buttons__wrap {
+  margin: 0 auto;
+  font-size: 0;
+  border: solid 1px black;
+}
+
+/* line 22, ../sass/style.scss */
+.button {
+  display: inline-block;
+  width: 25%;
+  height: 67px;
+  background: white;
+  color: black;
+  font-size: 30px;
+  box-sizing: border-box;
+  text-align: center;
+  border: solid 1px black;
+  cursor: pointer;
+  vertical-align: top;
+  line-height: 220%;
+}
+/* line 35, ../sass/style.scss */
+.button:hover {
+  background: black;
+  color: white;
+}
+/* line 39, ../sass/style.scss */
+.button.text-label {
+  font-size: 20px;
+  line-height: 3.2;
+}
+
+/* line 46, ../sass/style.scss */
+.calculator__wrap {
+  max-width: 300px;
+  margin: 4% auto;
+}
+/* line 50, ../sass/style.scss */
+.calculator__screen {
+  background: black;
+  padding: 4% 4%;
+  border: solid 2px black;
+  border-bottom: solid 0px;
+}
+/* line 58, ../sass/style.scss */
+.calculator .input-string {
+  font-size: 14px;
+  color: white;
+  display: block;
+  text-align: right;
+}
+/* line 64, ../sass/style.scss */
+.calculator .input-value {
+  font-size: 30px;
+  color: white;
+  display: block;
+  text-align: right;
+}
