@@ -1,5 +1,6 @@
 //ES6
 
+// Init vars
 let input = []
 let buttons = document.querySelectorAll('.button');
 const isNumber = s => !isNaN(parseFloat(s))
@@ -7,12 +8,14 @@ const isOperator = s => '+-*/^#()'.includes(s)
 const expElement = document.getElementById('input-string')
 const resultElement = document.getElementById('input-value')
 
-
+// Assign calculator buttons to function
 buttons.forEach((value, index) => {
 	buttons[index].addEventListener('click', buttonClick);	
 });
 
+// Button action
 function buttonClick(e) {
+	// Get button value
 	var value = e.target.dataset.value;
 	
 	switch(value){
@@ -28,10 +31,10 @@ function buttonClick(e) {
 			break;
 		
 		case '=':
-			result = (value.length == 0 ? 0 : solvingEquation(input)); 
+			result = (value.length == 0 ? 0 : solvingEquation(input))
 			resultElement.innerHTML = result
 			break;
-			
+		
 		default:
 			input.push(value)
 			updateExp(input)
@@ -39,7 +42,7 @@ function buttonClick(e) {
 	}
 }
 
-
+// Add value to calculator screen
 function updateExp(input) {
   if (input.length == 0) {
     expElement.innerHTML = '&nbsp;'
@@ -48,6 +51,7 @@ function updateExp(input) {
   }
 }
 
+// Trigger when keyboard is press
 function keycodeMatch(element) {
   const mapKeys = {
     'Backspace': 'DEL',
@@ -74,11 +78,13 @@ function keycodeMatch(element) {
   }
   const value = mapKeys[element.key];
   if (value){
-	document.querySelector(".button[data-value='"+value+"']").click()  
+    // Trigger click on the equal button
+    document.querySelector(".button[data-value='" + value + "']").click()  
   }
 }
 window.addEventListener('keydown', keycodeMatch)
 
+// Solving equation string
 function solvingEquation(input) {
   const exp = input.reduce((acc, curr, index) => {
     if(acc.length > 0 && !isOperator(curr) && !isOperator(acc[acc.length-1])) {
@@ -88,13 +94,11 @@ function solvingEquation(input) {
     }
     return acc
   }, [])
-  
-  console.log(exp)
-  console.log(reduceParenthesis(exp))
-  
+
   return solvingRpn(reduceParenthesis(exp))
 }
 
+// Stacking parenthesis value
 function reduceParenthesis(exp) {
   const precedence = {
     '#': 1,
@@ -133,6 +137,7 @@ function reduceParenthesis(exp) {
   return output
 }
 
+// Return operator equation for parenthesis in stack
 function solvingRpn(exp) {
   const operator = {
     '+': b => a => a + b,
@@ -150,7 +155,7 @@ function solvingRpn(exp) {
       let result = operator[value]
       
       while (typeof result == 'function')
-	  	result = result(queue.pop())
+        result = result(queue.pop())
 	    
       queue.push(result)
     }
