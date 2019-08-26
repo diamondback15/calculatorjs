@@ -1,1 +1,1 @@
-# calculatorjs
+# Calculator with Javascript
